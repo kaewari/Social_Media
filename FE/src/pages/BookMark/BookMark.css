@@ -1,0 +1,18 @@
+.book-mark{
+    position: fixed !important;
+    width: 100%;
+    height: calc(100vh - 50px);
+    overflow-y: hidden;
+    top: 60px;
+}
+.book-mark:hover{
+    overflow-y: auto;
+}
+.book-mark li:hover{
+    background-color: #ddd;
+}
+li{
+    border-radius: 10px;
+    margin-top: 10px !important;
+    padding: 10px !important;
+}

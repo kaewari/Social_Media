@@ -1,0 +1,105 @@
+version: '3'
+
+services:
+  be:
+    build: 
+      context: ./BE
+      dockerfile: ./Dockerfile
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      # - CORS="http://localhost" 
+      - REDIS_HOST=redis
+      - MONGODB_URI=mongodb://mongo_db:27017/social_media_dev
+      - NODE_ENV="development"
+    depends_on:
+      - redis
+      - mongo1
+      - mongo2
+      - mongo3
+      # - nginx
+    volumes:
+      - ./BE:/app
+      - /app/node_modules
+    links:
+      - mongo1
+      - mongo2
+      - mongo3
+      - redis
+    networks:
+      - common
+  fe:
+    build: ./FE
+    restart: always
+    volumes:
+      - ./FE:/app
+      - /app/node_modules
+    depends_on:
+      - be
+    ports:
+      - "3000:3000"
+    networks:
+      - common
+  redis:
+    image: redis:alpine
+    restart: always
+    volumes:
+      - redis-data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - common
+  mongo1:
+    image: mongo:latest
+    container_name: mongo1
+    restart: always
+    volumes:
+      - mongo-data-1:/data/db
+    ports:
+      - "27017:27017"
+    command: "--replSet rs0"
+    networks:
+      - common
+  mongo2:
+    image: mongo:latest
+    container_name: mongo2
+    restart: always
+    volumes:
+      - mongo-data-2:/data/db
+    ports:
+      - "27018:27017"
+    command: "--replSet rs0"
+    depends_on:
+      - mongo1
+    networks:
+      - common
+  mongo3:
+    image: mongo:latest
+    container_name: mongo3
+    restart: always
+    volumes:
+      - mongo-data-3:/data/db
+    ports:
+      - "27019:27017"
+    command: "--replSet rs0"
+    depends_on:
+      - mongo2
+    networks:
+      - common
+  # nginx:
+  #   image: nginx:alpine
+  #   volumes:
+  #     - ./BE/nginx.conf:/etc/nginx/nginx.conf
+  #     - ./FE/nginx.conf:/etc/nginx/nginx.conf
+  #   ports:
+  #     - "80:80"
+  #   networks:
+  #     - common
+volumes:
+  mongo-data-1:
+  mongo-data-2:
+  mongo-data-3:
+  redis-data:
+networks:
+  common:

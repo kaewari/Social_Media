@@ -1,0 +1,6 @@
+./BE/node_modules
+./FE/node_modules
+./BE/.dockerignore
+./FE/.dockerignore
+./BE/.env
+./FE/.env

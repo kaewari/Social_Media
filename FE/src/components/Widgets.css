@@ -1,0 +1,14 @@
+.widgets{
+    position: fixed !important;
+    overflow-y: hidden;
+    height: calc(100vh - 50px);
+    scrollbar-gutter: stable;
+    width: inherit;
+    padding-right: 10px !important;
+}
+.widgets img{
+    width: 100%;
+}
+.widgets:hover{
+    overflow-y: auto;
+}

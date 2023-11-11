@@ -1,0 +1,114 @@
+.login-page{  
+    display: flex;
+    flex-direction: row;
+    min-height: 82vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.login-page .left{
+    margin-top: -5rem !important;
+    width: 30rem;
+}
+.login-page .left p{
+    font-size: 3.5rem;
+}
+.login-page .left h2{
+    font-size: 1.7rem;
+    margin-bottom: 5rem;
+    max-width: 400px;
+}
+.login-page .right form{
+    width: 396px;
+}
+.login-page .right form input{
+    border: 0px;
+    border-radius: 5px;
+    width: 100%;
+    border: 1px solid #ccd0d5 !important;
+}
+.login-page .right form input:focus{
+    border: 1px solid blue;
+}
+.login-page .right .new-account{
+    display: flex;
+    justify-content: center;
+}
+.login-page .right .new-account div button {
+    padding: 10px !important;
+    font-weight: bold;
+    color: #fff;
+    background-color:#42b72a;
+}
+@media only screen and (max-width: 900px) {
+    .login-page{  
+        display: flex;
+        flex-direction: column;
+        min-height: 85vh;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .login-page .left{
+        width: fit-content;
+        text-align: center;
+    }
+    .login-page .left p{
+        font-size: 3rem;
+    }
+    .login-page .left h2{
+        font-size: 27px;
+        font-weight: normal;
+        margin-bottom: 2rem !important;
+        max-width: 400px;
+    }
+    .login-page .right form{
+        width: 396px;
+    }
+    .login-page .right .new-account{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+    }
+    .login-page .right .new-account div{
+        background-color:#42b72a;
+        text-align: center;
+    }
+}
+@media only screen and (max-width: 770px) {
+    .login-page{  
+        display: flex;
+        flex-direction: column;
+        min-height: 85vh;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .login-page .left{
+        width: fit-content;
+        text-align: center;
+    }
+    .login-page .left p{
+        font-size: 3rem;
+    }
+    .login-page .left h2{
+        font-size: 27px;
+        font-weight: normal;
+        margin-bottom: 2rem !important;
+        max-width: 400px;
+    }
+    .login-page .right form{
+        width: 396px;
+    }
+    .login-page .right .new-account{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+    }
+    .login-page .right .new-account div{
+        background-color:#42b72a;
+        text-align: center;
+    }
+}

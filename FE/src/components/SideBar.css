@@ -1,0 +1,20 @@
+.side-bar{
+    position: fixed !important;
+    width: inherit;
+    height: calc(100vh - 50px);
+    overflow-y: hidden;
+}
+.side-bar:hover{
+    overflow-y: auto;
+}
+.side-bar li:hover{
+    background-color: #ddd;
+}
+.side-bar li{
+    border-radius: 10px;
+    margin-top: 10px !important;
+    padding: 10px !important;
+}
+.side-bar li > span{
+    font-size: larger;
+}

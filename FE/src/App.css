@@ -1,0 +1,12 @@
+*{
+    outline: none !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-decoration: none !important;
+}
+body {
+    background-color: #f0f2f5;
+    word-break: break-word;
+    overflow-x: hidden;
+}
