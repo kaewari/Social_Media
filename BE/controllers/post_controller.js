@@ -4,7 +4,8 @@ const statusCodes = require("../constants/status_code");
 const successMessages = require("../constants/success_msg");
 const PostService = require("../services/post.service");
 const { parser } = require("../middlewares/multerMiddleware");
-const { ObjectId } = require("bson");
+const { default: mongoose } = require("mongoose");
+const AppError = require("../errors/AppError");
 exports.createPost = async (req, res) => {
   try {
     parser(req, res, async (err) => {
@@ -27,60 +28,48 @@ exports.createPost = async (req, res) => {
           return res
             .status(statusCodes.BAD_REQUEST)
             .json({ message: errorMessages.UNSUPPORTED_FILE });
-        // Handle unknown error
         return res
-          .status(statusCodes.INTERNAL_SERVER_ERROR)
+          .status(statusmbvcxCodes.INTERNAL_SERVER_ERROR)
           .send({ message: errorMessages.UPLOAD_FILE_FAILED });
       } else {
-        const post_images = req.files["image"]
-          ? req.files["image"].map((file) => ({
-              image_url: file.path,
-              image_format: file.originalname.substring(
-                file.originalname.lastIndexOf(".")
-              ),
-              image_name: file.originalname,
-              image_size: file.size,
-            }))
-          : [];
-        const post_videos = req.files["video"]
-          ? req.files["video"].map((file) => ({
-              video_url: file.path,
-              video_format: file.originalname.substring(
-                file.originalname.lastIndexOf(".")
-              ),
-              video_name: file.originalname,
-              video_size: file.size,
-            }))
-          : [];
+        const post_images = req.files["image"];
+        const post_videos = req.files["video"];
         const post_fields = req.body;
-        if (
-          post_fields.post_userId &&
-          (post_fields.post_content || post_images[0] || post_videos[0])
-        ) {
+        post_fields.post_userId = req.user_id;
+        if (post_fields.post_content || post_images[0] || post_videos[0]) {
           const post = {
             post_fields: post_fields,
             post_images: post_images,
             post_videos: post_videos,
           };
           const newPost = await PostService.createPost(post);
-          return res
-            .status(statusCodes.CREATED)
-            .json({ message: successMessages.POST_CREATED, metadata: newPost });
+          if (newPost instanceof AppError) {
+            return res
+              .status(newPost.statusCode)
+              .json({
+                code: newPost.statusCode,
+                name: newPost.name,
+                message: newPost.message,
+              });
+          }
+          return res.status(statusCodes.CREATED).json({
+            code: statusCodes.CREATED,
+            message: successMessages.POST_CREATED,
+            metadata: newPost,
+          });
         } else {
-          return res
-            .status(statusCodes.BAD_REQUEST)
-            .json({ message: errorMessages.INVALID_INPUT });
+          return res.status(statusCodes.BAD_REQUEST).json({
+            code: statusCodes.BAD_REQUEST,
+            message: errorMessages.INVALID_INPUT,
+          });
         }
       }
     });
   } catch (error) {
-    if (error.message === statusCodes.NOT_FOUND)
-      return res
-        .status(statusCodes.NOT_FOUND)
-        .json({ message: errorMessages.POST_NOT_FOUND });
-    return res
-      .status(statusCodes.INTERNAL_SERVER_ERROR)
-      .json({ message: error.message });
+    return res.status(statusCodes.INTERNAL_SERVER_ERROR).json({
+      code: statusCodes.INTERNAL_SERVER_ERROR,
+      message: error.message,
+    });
   }
 };
 exports.getPosts = async (req, res) => {

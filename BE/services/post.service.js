@@ -1,13 +1,13 @@
 const errorMessages = require("../constants/error_msg");
+const statusCodes = require("../constants/status_code");
 const PostRepository = require("../repositories/post.repository");
 class PostService {
   static async createPost(post) {
     try {
       const metadata = await PostRepository.createPost(post);
-      console.log(metadata);
       return metadata;
     } catch (error) {
-      throw error;
+      return new AppError(error.message, statusCodes.INTERNAL_SERVER_ERROR);
     }
   }
   static async getPostById(post) {
@@ -21,7 +21,8 @@ class PostService {
     try {
       return await PostRepository.getPostByUserId(userId);
     } catch (error) {
-      throw error;
+      console.log("erorr handling");
+      throw new Error(error);
     }
   }
   static async updatePost(postId, objectParams) {
