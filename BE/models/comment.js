@@ -11,6 +11,7 @@ const schema = new mongoose.Schema({
     required: true,
   },
   comment_content: {
+    trim: true,
     type: String,
     required: true,
   },
