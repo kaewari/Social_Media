@@ -1,5 +1,2 @@
 node_modules
-BE/.dockerignore
-BE/.env
-FE/.dockerignore
-FE/.env
+.env
