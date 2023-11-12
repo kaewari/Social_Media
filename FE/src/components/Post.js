@@ -1,11 +1,7 @@
-import React, { Fragment, useEffect, useMemo, useRef, useState } from "react";
-import { Button, Card, Container, Form, Image, Row } from "react-bootstrap";
-import "../components/Post.css";
-import SpinnerLoading from "./SpinnerLoading";
-import { Link } from "react-router-dom";
 import moment from "moment";
-import { authApi, endpoint } from "../apis/Apis";
-import LazyLoad from "react-lazyload";
+import React, { useState } from "react";
+import { Button, Card, Form, Image } from "react-bootstrap";
+import "../components/Post.css";
 const list = [];
 const max = 5;
 function Post(props) {
@@ -41,12 +37,7 @@ function Post(props) {
     <Card>
       <div className="m-2 p-2">
         <div className="d-flex">
-          <LazyLoad
-            once={true}
-            placeholder={<img className="avatar" src={data.image} alt="" />}
-          >
-            <img className="avatar" src={data.image} alt="" />
-          </LazyLoad>
+          <img className="avatar" src={data.image} alt="" />
 
           <div className="d-flex flex-column">
             <span className="fw-bold ms-2">{data._id}</span>
@@ -75,22 +66,7 @@ function Post(props) {
         <hr />
         <Form onSubmit={SendComment} className="d-flex">
           <a href={data.image}>
-            <LazyLoad
-              once={true}
-              placeholder={
-                <img
-                  className="avatar"
-                  src={data.image}
-                  alt={data.title}
-                />
-              }
-            >
-              <img
-                className="avatar"
-                src={data.image}
-                alt={data.title}
-              />
-            </LazyLoad>
+            <img className="avatar" src={data.image} alt={data.title} />
           </a>
           <input
             id={data.id}

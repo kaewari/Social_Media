@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import SpinnerLoading from "./SpinnerLoading";
-import Post from "./Post";
-import "./Feed.css";
 import { authApi, endpoint } from "../apis/Apis";
-import LazyLoad from "react-lazyload";
+import "./Feed.css";
+import Post from "./Post";
+import SpinnerLoading from "./SpinnerLoading";
 
 function Feed() {
   const [q] = useSearchParams();
@@ -84,18 +83,11 @@ function Feed() {
       {isLoading ? (
         <SpinnerLoading />
       ) : posts && posts.length > 0 ? (
-        posts.map((post, key) => (
-          <LazyLoad
-            height={200}
-            offset={[-100, 300]}
-            key={key}
-            placeholder={<SpinnerLoading />}
-          >
-            <Post key={key} post={post} />
-          </LazyLoad>
-        ))
+        posts.map((post, key) => <Post key={key} post={post} />)
       ) : (
-        <h3>No content found</h3>
+        <h5 className="text-center text-danger fst-italic opacity-75">
+          No content found
+        </h5>
       )}
     </div>
   );
