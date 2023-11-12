@@ -10,8 +10,11 @@
     width: 20%;
 }
 #feed{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
     justify-self: center !important;
-    width: 70%;
+    width: 50%;
 }
 #widget{
     width: 20%;

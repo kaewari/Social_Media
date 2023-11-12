@@ -1,3 +1,14 @@
+import {
+  GroupTwoTone,
+  HomeOutlined,
+  Menu,
+  Message,
+  Notifications,
+  OndemandVideo,
+  People,
+  Person,
+  Store,
+} from "@material-ui/icons";
 import { useState } from "react";
 import { Image } from "react-bootstrap";
 import { Link, NavLink, useNavigate } from "react-router-dom";
@@ -13,19 +24,43 @@ function Header() {
   };
 
   return (
-    <div className="d-flex header p-2 bg-body-tertiary justify-content-between">
-      <div className="">
+    <div className="header p-2 bg-body-tertiary">
+      <div className="left">
         <Link to="/">
           <Image src={logo} alt="logo" width={40} roundedCircle={true} />
         </Link>
-        <NavLink
-          className="menu-side-bar"
-          onClick={handle}
-          to={!toggle && "/book-mark"}
-        >
-          <i className="fa-solid fa-bars fa-2x"></i>
-        </NavLink>
         <SearchBar />
+      </div>
+      <div className="bottom">
+        <NavLink to={"/"} activeClassName="active">
+          <HomeOutlined />
+        </NavLink>
+        <NavLink to={"/friend"}>
+          <People />
+        </NavLink>
+        <NavLink to={"/video"}>
+          <OndemandVideo />
+        </NavLink>
+        <NavLink to={"/shop"}>
+          <Store />
+        </NavLink>
+        <NavLink to={"/group"}>
+          <GroupTwoTone />
+        </NavLink>
+        <NavLink onClick={handle} to={!toggle && "/book-mark"}>
+          <Menu />
+        </NavLink>
+      </div>
+      <div className="right">
+        <div>
+          <Message />
+        </div>
+        <div>
+          <Notifications />
+        </div>
+        <div>
+          <Person />
+        </div>
       </div>
     </div>
   );

@@ -3,6 +3,56 @@
     top: 0;
     width: 100%;
     z-index: 10;
+    display: grid !important;
+    grid-template-columns: 32% 40% 28%;
+}
+.header .left{
+    display: flex;
+}
+.header .bottom .active{
+    border-bottom: 3px solid black;
+}
+.header .bottom{
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    justify-items: center;
+    align-items: center;
+}
+.header .bottom a:last-child{
+    display: none;
+}
+.header .bottom > a {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    height: 100%;
+    width: 100%;
+}
+.header a > svg{
+    font-size: 2rem;
+    align-self: center;
+}
+.header a:not(.active):hover{
+    border-radius: 10px;
+    background-color: beige;
+}
+.header .right{
+    display: grid;
+    grid-template-columns: repeat(3,60px);
+    align-items: center;
+    justify-items: center;
+    justify-content: flex-end;
+    
+}
+.header .right > div {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    height: 100%;
+    width: 100%;
+}
+.header .right > svg{
+    margin-left: 10px !important;
 }
 .menu-nav-bar{
     margin-right: 5em !important;
@@ -11,9 +61,22 @@
     display: none;
 }
 @media only screen and (max-width: 1100px) {
+    .header{
+        display: grid;
+        grid-template-columns: 20% 60% 20% !important;
+    }
+    .header .bottom{
+        grid-template-columns: repeat(6, auto);
+    }
+    .header .bottom:last-child{
+        align-self: center;
+        justify-self: center;
+    }
+    .header .bottom svg{
+        color: black;
+    }
     .search-form{
         display: none !important;
-        
     }
     .search-bar{
         display: flex;
