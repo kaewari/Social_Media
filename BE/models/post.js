@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const moment = require("moment");
 const { ObjectId } = require("mongodb");
 const DOCUMENT_NAME = ["post", "image", "video"];
 const postSchema = new mongoose.Schema({
