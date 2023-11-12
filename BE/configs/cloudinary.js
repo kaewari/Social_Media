@@ -24,7 +24,7 @@ const storage = new CloudinaryStorage({
     return {
       folder: folder,
       resource_type: resource_type,
-      public_id: req.body.post_userId + "_" + Date.now(), // Optional: customize public ID
+      public_id: Date.now(), // Optional: customize public ID
     };
   },
 });

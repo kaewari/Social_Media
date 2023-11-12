@@ -1,56 +1,60 @@
 const multer = require("multer");
+const { parser } = require("../middlewares/multerMiddleware");
 const errorMessages = require("../constants/error_msg");
 const statusCodes = require("../constants/status_code");
 const successMessages = require("../constants/success_msg");
 const PostService = require("../services/post.service");
-const { parser } = require("../middlewares/multerMiddleware");
-const { default: mongoose } = require("mongoose");
 const AppError = require("../errors/AppError");
 exports.createPost = async (req, res) => {
   try {
     parser(req, res, async (err) => {
-      if (err instanceof multer.MulterError) {
-        // Handle multer-specific errors
-        switch (err.message) {
-          case "LIMIT_FILE_COUNT": {
-            return res
-              .status(statusCodes.BAD_REQUEST)
-              .send({ message: errorMessages.FILE_COUNT_LIMIT });
-          }
-          case "LIMIT_FILE_SIZE": {
-            return res
-              .status(statusCodes.BAD_REQUEST)
-              .send({ message: errorMessages.FILE_TOO_LARGE });
+      try {
+        if (err instanceof multer.MulterError) {
+          switch (err.message) {
+            case "LIMIT_FILE_COUNT":
+              return res
+                .status(statusCodes.BAD_REQUEST)
+                .send({ message: errorMessages.FILE_COUNT_LIMIT });
+            case "LIMIT_FILE_SIZE":
+              return res.status(statusCodes.BAD_REQUEST).send({
+                code: statusCodes.BAD_REQUEST,
+                message: errorMessages.FILE_TOO_LARGE,
+              });
+            default:
+              return res.status(statusCodes.INTERNAL_SERVER_ERROR).send({
+                code: statusCodes.INTERNAL_SERVER_ERROR,
+                message: err.message,
+              });
           }
         }
-      } else if (err) {
-        if (err.message === errorMessages.UNSUPPORTED_FILE)
-          return res
-            .status(statusCodes.BAD_REQUEST)
-            .json({ message: errorMessages.UNSUPPORTED_FILE });
-        return res
-          .status(statusmbvcxCodes.INTERNAL_SERVER_ERROR)
-          .send({ message: errorMessages.UPLOAD_FILE_FAILED });
-      } else {
-        const post_images = req.files["image"];
-        const post_videos = req.files["video"];
+        if (err instanceof Error) {
+          if (err.message === errorMessages.UNSUPPORTED_FILE)
+            return res.status(statusCodes.BAD_REQUEST).json({
+              code: statusCodes.BAD_REQUEST,
+              message: errorMessages.UNSUPPORTED_FILE,
+            });
+          return res.status(statusCodes.INTERNAL_SERVER_ERROR).send({
+            code: statusCodes.INTERNAL_SERVER_ERROR,
+            message: err.message,
+          });
+        }
+        const post_images = [];
+        const post_videos = [];
+        req.files["media"].map((file) => {
+          if (file.mimetype.startsWith("image")) post_images.push(file);
+          else if (file.mimetype.startsWith("video")) post_videos.push(file);
+        });
         const post_fields = req.body;
         post_fields.post_userId = req.user_id;
         if (post_fields.post_content || post_images[0] || post_videos[0]) {
-          const post = {
-            post_fields: post_fields,
-            post_images: post_images,
-            post_videos: post_videos,
-          };
+          const post = { post_fields, post_images, post_videos };
           const newPost = await PostService.createPost(post);
           if (newPost instanceof AppError) {
-            return res
-              .status(newPost.statusCode)
-              .json({
-                code: newPost.statusCode,
-                name: newPost.name,
-                message: newPost.message,
-              });
+            return res.status(newPost.statusCode).json({
+              code: newPost.statusCode,
+              name: newPost.name,
+              message: newPost.message,
+            });
           }
           return res.status(statusCodes.CREATED).json({
             code: statusCodes.CREATED,
@@ -63,6 +67,11 @@ exports.createPost = async (req, res) => {
             message: errorMessages.INVALID_INPUT,
           });
         }
+      } catch (error) {
+        return res.status(statusCodes.INTERNAL_SERVER_ERROR).send({
+          code: statusCodes.INTERNAL_SERVER_ERROR,
+          message: error.message,
+        });
       }
     });
   } catch (error) {

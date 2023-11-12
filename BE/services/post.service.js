@@ -21,7 +21,6 @@ class PostService {
     try {
       return await PostRepository.getPostByUserId(userId);
     } catch (error) {
-      console.log("erorr handling");
       throw new Error(error);
     }
   }
