@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../components/SearchBar.css";
+import "./SearchBar.css";
 import { Form } from "react-bootstrap";
 
 const SearchBar = () => {

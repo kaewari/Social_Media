@@ -20,7 +20,9 @@ const successMessages = {
   LIKE_SUCCESSFULL: "Liked successfully.",
   UNLIKE_SUCCESSFULL: "Unliked successfully.",
   UPLOAD_FILE_SUCCESSFULL: "Upload file successfully.",
-  
+  GROUP_CREATED: "Group created successfully.",
+  GROUP_UPDATED: "Group updated successfully.",
+  GROUP_DELETED: "Group deleted successfully.",
 };
 
 // Export success messages

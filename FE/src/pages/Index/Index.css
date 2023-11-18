@@ -1,10 +1,12 @@
-.index-page {
+#index-page {
     display: grid;
-    grid-template-columns: 20% 60% 20%;
+    grid-template-columns: 25% 50% 25%;
     width: 100% !important;
-    column-gap: 2%;
     position: relative;
     top: 60px;
+    overflow-x: hidden;
+    height: calc(100vh - 100px);
+    overflow-y: scroll;
 }
 #side-bar{
     width: 20%;
@@ -14,17 +16,15 @@
     flex-flow: column wrap;
     justify-content: center;
     justify-self: center !important;
-    width: 50%;
+    width: 60%;
 }
 #widget{
     width: 20%;
 }
 @media only screen and (max-width: 1100px) {
-    .index-page {
-        grid-template-columns: 70% 30%;
-    }
-    #side-bar{
-        display: none;
+    #index-page {
+        grid-template-columns: 20% 50% 30%;
+        justify-content: center;
     }
     #feed{
         width: 70% !important;
@@ -34,20 +34,22 @@
     }
 }
 @media only screen and (max-width: 900px) {
-    .index-page {
-        grid-template-columns: 80%;
-        justify-content: center;
+    #index-page {
+        grid-template-columns: 80% 20%;
     }
-    #widgets{
+    #side-bar{
         display: none;
     }
     #feed{
         width: 80% !important;
         padding: 0 !important;
     }
+    #widgets{
+        width: 20% !important;
+    }
 }
 @media only screen and (max-width: 700px) {
-    .index-page {
+    #index-page {
         grid-template-columns: 100%;
     }
     #feed{

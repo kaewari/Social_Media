@@ -9,9 +9,9 @@ class PostRepository {
     try {
       const p = await post.findById(postId);
       if (p) return p;
-      throw new Error(statusCodes.NOT_FOUND);
+      return new AppError(errorMessages.POST_NOT_FOUND, statusCodes.NOT_FOUND);
     } catch (error) {
-      throw error;
+      return new AppError(error.message);
     }
   }
   static async createPost(p) {
@@ -60,7 +60,7 @@ class PostRepository {
           return results;
         })
         .catch((error) => {
-          throw error;
+          return new AppError(error.message);
         });
       await session.commitTransaction();
       return results;
@@ -102,7 +102,7 @@ class PostRepository {
       throw error;
     }
   }
-  static async getPostsFriends(lastPostId, pageSize) {
+  static async getPosts(lastPostId, pageSize) {
     try {
       if (lastPostId) {
         const posts = await post

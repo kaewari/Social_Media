@@ -1,12 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { authApi, endpoint } from "../apis/Apis";
+import { authApi, endpoint } from "../../apis/Apis";
 import "./Feed.css";
-import Post from "./Post";
-import SpinnerLoading from "./SpinnerLoading";
+import Post from "../Post/Post";
+import SpinnerLoading from "../Spinner/SpinnerLoading";
+import PostModal from "../PostModal/PostModal";
 
 function Feed() {
   const [q] = useSearchParams();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [isLoading, setIsLoading] = useState(false);
   const [posts, setPosts] = useState([]);
   const postRef = useRef([]);
@@ -15,6 +18,22 @@ function Feed() {
   const [error, setError] = useState("");
   const lastPostId = useRef("");
   const kw = q.get("kw");
+  const post1 = {
+    _id: 1,
+    image: "",
+  };
+  const post2 = {
+    _id: 2,
+    image: "",
+  };
+  const post3 = {
+    _id: 3,
+    image: "",
+  };
+  const post4 = {
+    _id: 4,
+    image: "",
+  };
   useEffect(() => {
     const abortController = new AbortController();
     setIsLoading(true);
@@ -77,10 +96,9 @@ function Feed() {
   //     }
   //   });
   // }, [lastPostId]);
-
   return (
     <div className="feed">
-      {isLoading ? (
+      {/* {isLoading ? (
         <SpinnerLoading />
       ) : posts && posts.length > 0 ? (
         posts.map((post, key) => <Post key={key} post={post} />)
@@ -88,7 +106,12 @@ function Feed() {
         <h5 className="text-center text-danger fst-italic opacity-75">
           No content found
         </h5>
-      )}
+      )} */}
+      <Post post={post1} />
+      <Post post={post2} />
+      <Post post={post3} />
+      <Post post={post4} />
+      <PostModal />
     </div>
   );
 }

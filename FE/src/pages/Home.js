@@ -1,17 +1,15 @@
 import React from "react";
 import { Outlet, Route, Routes } from "react-router-dom";
+import Group from "../components/Group/Group";
+import Shop from "../components/Shop/Shop";
 import Header from "../layouts/Header";
 import BookMark from "./BookMark/BookMark";
 import Friend from "./Friend";
 import Index from "./Index/Index";
 import Login from "./Login/Login";
-import Message from "./Message";
 import Profile from "./Profile/Profile";
 import Register from "./Register/Register";
 import Video from "./Video";
-import Group from "../components/Group";
-import Shop from "../components/Shop";
-import Notification from "../components/Notification";
 
 function Home() {
   const Layout = () => {

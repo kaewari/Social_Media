@@ -1,18 +1,25 @@
 import moment from "moment";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Button, Card, Form, Image } from "react-bootstrap";
-import "../components/Post.css";
+import { useDispatch } from "react-redux";
+import { openModal } from "../../store/modalPostActions";
+import "./Post.css";
 const list = [];
 const max = 5;
-function Post(props) {
-  const data = props.post;
+function Post({ post }) {
+  const postRef = useRef();
   const [comment, setComment] = useState("");
   const [show, setShow] = useState(false);
   const [count, setCount] = useState(0);
+  const dispatch = useDispatch();
+
+  const openModalHandler = () => {
+    dispatch(openModal(post));
+  };
+
   function showComments() {
     setShow(!show);
   }
-
   const SendComment = (e) => {
     e.preventDefault();
     // setCount(count + 1);
@@ -34,43 +41,44 @@ function Post(props) {
     }, count * 10000);
   };
   return (
-    <Card>
+    <Card ref={postRef}>
       <div className="m-2 p-2">
         <div className="d-flex">
-          <img className="avatar" src={data.image} alt="" />
+          <img className="avatar" src={post.image} alt="" />
 
           <div className="d-flex flex-column">
-            <span className="fw-bold ms-2">{data._id}</span>
+            <span className="fw-bold ms-2">{post._id}</span>
             <span className="ms-2">{moment().startOf("hour").fromNow()}</span>
           </div>
         </div>
-        <Card.Title>{data.content}</Card.Title>
+        <Card.Title>{post.content}</Card.Title>
+        <Card.Title>This is content from post {post._id}</Card.Title>
       </div>
-      <Card.Img src={data.image} />
+      <Card.Img src={post.image} />
       <Card.Body>
-        <hr />
-        <div className="body d-flex justify-content-between">
-          <Button>
-            <i className="fa-solid fa-thumbs-up"></i>
-            Like
-          </Button>
-          <Button>
-            <i className="fa-solid fa-comment"></i>
-            Comment
-          </Button>
-          <Button>
-            <i className="fa-solid fa-share"></i>
-            Share
-          </Button>
+        <div className="d-flex justify-content-center">
+          <div className="body d-flex justify-content-between">
+            <Button>
+              <i className="fa-solid fa-thumbs-up"></i>
+              Like
+            </Button>
+            <Button onClick={openModalHandler}>
+              <i className="fa-solid fa-comment"></i>
+              Comment
+            </Button>
+            <Button>
+              <i className="fa-solid fa-share"></i>
+              Share
+            </Button>
+          </div>
         </div>
-        <hr />
         <Form onSubmit={SendComment} className="d-flex">
-          <a href={data.image}>
-            <img className="avatar" src={data.image} alt={data.title} />
+          <a href={post.image}>
+            <img className="avatar" src={post.image} alt={post.title} />
           </a>
           <input
-            id={data.id}
-            className="comment ms-2 rounded w-100 rounded-4 ps-2"
+            id={post.id}
+            className="comment rounded w-100 rounded-4"
             type="text"
             placeholder="Write your comment"
             value={comment}
@@ -81,11 +89,11 @@ function Post(props) {
         {list.length > 3 ? (
           <>
             <div className="d-flex">
-              <a href={data.image}>
-                <Image className="avatar" src={data.image} alt={data.title} />
+              <a href={post.image}>
+                <Image className="avatar" src={post.image} alt={post.title} />
               </a>
               <div className="d-flex flex-column">
-                <span>{data.title}</span>
+                <span>{post.title}</span>
                 <span>{list[list.length - 1]}</span>
               </div>
             </div>
@@ -98,11 +106,11 @@ function Post(props) {
         ) : (
           list.map((item, index) => (
             <div className="d-flex">
-              <a key={index} href={data.image}>
-                <Image className="avatar" src={data.image} alt={data.title} />
+              <a key={index} href={post.image}>
+                <Image className="avatar" src={post.image} alt={post.title} />
               </a>
               <div className="d-flex flex-column">
-                <span>{data.title}</span>
+                <span>{post.title}</span>
                 <p key={index}>{item}</p>
               </div>
             </div>
@@ -111,11 +119,11 @@ function Post(props) {
         {show &&
           list.map((item, index) => (
             <div className="d-flex ">
-              <a href={data.image}>
-                <Image className="avatar" src={data.image} alt={data.title} />
+              <a href={post.image}>
+                <Image className="avatar" src={post.image} alt={post.title} />
               </a>
               <div className="d-flex flex-column">
-                <span>{data.title}</span>
+                <span>{post.title}</span>
                 <p key={index}>{item}</p>
               </div>
             </div>

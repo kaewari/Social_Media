@@ -1,5 +1,5 @@
-import React, { useRef, useState } from "react";
-import { Button, Form, FormGroup } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Form } from "react-bootstrap";
 import "./Register.css";
 const validateEmail = (email) => {
   const regrexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;

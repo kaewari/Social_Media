@@ -52,7 +52,6 @@ exports.createPost = async (req, res) => {
           if (newPost instanceof AppError) {
             return res.status(newPost.statusCode).json({
               code: newPost.statusCode,
-              name: newPost.name,
               message: newPost.message,
             });
           }
@@ -85,7 +84,7 @@ exports.getPosts = async (req, res) => {
   try {
     const pageSize = process.env.PAGE_SIZE_POST;
     const lastPostId = req.body.lastPostId;
-    const response = await PostService.getPostsFriends(lastPostId, pageSize);
+    const response = await PostService.getPosts(lastPostId, pageSize);
     return res
       .status(statusCodes.OK)
       .json({ metadata: response.posts, hasMore: response.hasMore });

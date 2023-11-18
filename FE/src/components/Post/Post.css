@@ -10,21 +10,27 @@
     margin-bottom: 30px !important;
 }
 .avatar{
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border: 1px solid transparent;
     border-radius: 20px;
 }
 .card .body{
-    padding: 8px !important;
+    padding: 5px !important;
+    border-top: 2px solid #f0f2f5;
+    border-bottom: 2px solid #f0f2f5;
+    width: 90%;
+    margin: 0 auto;
 }
+.card .body button:hover{
+    background-color: #f0f2f5;
+}
+
 .card .body button{
     background-color: transparent;
     width: 100%;
-    border: none;
     color: black;
-    padding: 5px !important;
-    font-size: larger;
+    border: none;
 }
 .card .body button i{
     margin-right: 5px !important;
@@ -33,6 +39,7 @@
     padding: 8px !important;
 }
 .card .comment {
-    padding: 5px !important;
+    background-color: #f0f2f5;
+    border: transparent;
+    padding: 0 10px 0 10px !important;
 }
-

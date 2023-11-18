@@ -12,7 +12,7 @@ import {
 import { useState } from "react";
 import { Image } from "react-bootstrap";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import SearchBar from "../components/SearchBar";
+import SearchBar from "../components/SearchBar/SearchBar";
 import logo from "../static/instagram_icon.png";
 import "./Header.css";
 function Header() {
@@ -24,7 +24,7 @@ function Header() {
   };
 
   return (
-    <div className="header p-2 bg-body-tertiary">
+    <div className="header pt-2 pb-2 bg-body-tertiary">
       <div className="left">
         <Link to="/">
           <Image src={logo} alt="logo" width={40} roundedCircle={true} />
@@ -32,7 +32,7 @@ function Header() {
         <SearchBar />
       </div>
       <div className="bottom">
-        <NavLink to={"/"} activeClassName="active">
+        <NavLink to={"/"} activeclassname="active">
           <HomeOutlined />
         </NavLink>
         <NavLink to={"/friend"}>
