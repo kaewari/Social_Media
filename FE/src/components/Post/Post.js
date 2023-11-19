@@ -42,7 +42,7 @@ function Post({ post }) {
     }, count * 10000);
   };
   return (
-    <Card ref={postRef}>
+    <Card className="post">
       <div className="m-2 p-2">
         <div className="d-flex">
           <img className="avatar" src={post.image} alt="" />

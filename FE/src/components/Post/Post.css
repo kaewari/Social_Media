@@ -1,7 +1,7 @@
 .show-comment:hover{
     color: red !important;
 }
-.body > .w-100:hover{
+.card .body > .w-100:hover{
     color: blue !important;
     background-color:gainsboro !important;
 }
