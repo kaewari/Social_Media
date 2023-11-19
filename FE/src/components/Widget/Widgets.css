@@ -1,15 +1,26 @@
 .widgets{
+    width: 25%;
+    right: 0;
     position: fixed !important;
-    overflow-y: hidden;
     height: calc(100vh - 50px);
-    scrollbar-gutter: stable;
-    width: inherit;
-    padding-right: 10px !important;
     margin-right: 1px !important;
+    overflow-y: hidden;
+    scrollbar-gutter: stable;
 }
-.widgets img{
+.widgets .content{
     width: 100%;
 }
+.widgets .content > div{
+    padding: 0 0 10px 0 !important;
+    display: flex;
+}
+.widgets .content > div > img{
+    border-radius: 20px;
+    margin-right: 5px !important;
+}
+.widgets .content > div > p{
+    font-weight: 500;
+}
 .widgets:hover{
-    overflow-y: auto;
+    overflow-y: scroll;
 }

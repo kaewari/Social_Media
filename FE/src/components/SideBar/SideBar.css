@@ -1,6 +1,6 @@
 .side-bar{
     position: fixed !important;
-    width: inherit;
+    width: 25%;
     height: calc(100vh - 50px);
     overflow-y: hidden;
     scrollbar-gutter: stable;

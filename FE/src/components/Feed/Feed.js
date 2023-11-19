@@ -20,19 +20,19 @@ function Feed() {
   const kw = q.get("kw");
   const post1 = {
     _id: 1,
-    image: "",
+    image: "https://loremflickr.com/640/480/animals",
   };
   const post2 = {
     _id: 2,
-    image: "",
+    image: "https://loremflickr.com/640/480/animals",
   };
   const post3 = {
     _id: 3,
-    image: "",
+    image: "https://loremflickr.com/640/480/animals",
   };
   const post4 = {
     _id: 4,
-    image: "",
+    image: "https://loremflickr.com/640/480/animals",
   };
   useEffect(() => {
     const abortController = new AbortController();
