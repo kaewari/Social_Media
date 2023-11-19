@@ -6,6 +6,7 @@
     z-index: 10;
     display: flex;
     align-items: center;
+    padding: 5px !important;
 }
 .header > .left, .bottom, .right{
     display: flex !important;
@@ -29,15 +30,18 @@
     color: #0d6efd;
     border-bottom: 3px solid black;
 }
-.header .bottom a:last-child{
-    display: none;
-}
 .header .bottom > a {
     display: grid;
     align-items: center;
     justify-items: center;
     height: 100%;
     width: 100%;
+}
+.header .bottom a:last-child{
+    display: none;
+}
+.header .bottom > a, .header .right > div{
+    cursor: pointer;
 }
 .header svg{
     font-size: 2rem;
@@ -48,13 +52,15 @@
     border-radius: 10px;
     background-color: beige;
 }
-.menu-side-bar{
-    display: none;
-}
 @media only screen and (max-width: 900px) {
+    .header .left{
+        width: 20%;
+    }
+    .header .bottom{
+        width: 50%;
+    }
     .search-form{
         display: none !important;
-        
     }
     .search-bar{
         display: flex;
@@ -63,16 +69,26 @@
     .menu-nav-bar{
         margin-right: 2em !important;
     }
-    .menu-side-bar{
+    .header .bottom a:nth-child(5){
+        display: none;
+    }
+    .header .bottom a:last-child{
+        text-align: center;
         display: block;
     }
 }
 @media only screen and (max-width: 700px) {
-    .menu-nav-bar{
-        display: none !important;
+    .header .bottom{
+        width: fit-content;
     }
-    .menu-side-bar{
-        position: absolute;
-        left: 100px;
+    .header .right{
+        width: 100%;
+        justify-content: flex-end;
+    }
+    .header .bottom a:not(a:last-child){
+        display: none;
+    }
+    .header .bottom a:last-child{
+        width: fit-content;
     }
 }

@@ -10,12 +10,17 @@ import {
   WorkOutline,
   Event,
   School,
+  Person,
 } from "@material-ui/icons";
 function BookMark() {
   return (
     <div className="book-mark">
       <div className="sidebarWrapper">
         <ul className="sidebarList">
+          <li className="sidebarListItem">
+            <Person className="sidebarIcon" />
+            <span className="sidebarListItemText">User</span>
+          </li>
           <li className="sidebarListItem">
             <RssFeed className="sidebarIcon" />
             <span className="sidebarListItemText">Feed</span>

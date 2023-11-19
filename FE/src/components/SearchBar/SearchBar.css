@@ -2,6 +2,7 @@
     font-size: 1.25rem;
 }
 .search-icon{
+    cursor: pointer;
     color: blue;
 }
 .search-bar{
