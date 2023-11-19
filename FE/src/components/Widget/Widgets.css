@@ -5,6 +5,7 @@
     scrollbar-gutter: stable;
     width: inherit;
     padding-right: 10px !important;
+    margin-right: 1px !important;
 }
 .widgets img{
     width: 100%;

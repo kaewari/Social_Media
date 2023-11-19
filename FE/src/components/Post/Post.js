@@ -14,6 +14,7 @@ function Post({ post }) {
   const dispatch = useDispatch();
 
   const openModalHandler = () => {
+    document.body.style.overflowY = "hidden";
     dispatch(openModal(post));
   };
 
