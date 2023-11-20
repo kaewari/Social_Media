@@ -1,9 +1,17 @@
 import React, { useRef, useState } from "react";
-import { Image } from "react-bootstrap";
+import { Image, Modal } from "react-bootstrap";
 import "./PostUpload.css";
+import MediaFile from "./Photo_Video/MediaFile";
 function PostUpload() {
   const [mind, setMind] = useState();
+  const [media, setMedia] = useState(false);
   const name = useRef("Son");
+  function openPhotoVideo() {
+    setMedia(true);
+  }
+  function closePhotoVideo() {
+    setMedia(false);
+  }
   return (
     <div className="post-upload">
       <div className="top">
@@ -24,7 +32,7 @@ function PostUpload() {
       <hr />
       <div className="bottom">
         <div>Live Video</div>
-        <div>Photo/video</div>
+        <div onClick={openPhotoVideo}>Photo/video</div>
         <div>Feeling/activity</div>
       </div>
     </div>

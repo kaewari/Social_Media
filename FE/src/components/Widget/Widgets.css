@@ -7,6 +7,14 @@
     overflow-y: hidden;
     scrollbar-gutter: stable;
 }
+.widgets .title .icon svg{
+    padding: 2px !important;
+    cursor: pointer;
+}
+.widgets .title .icon svg:hover{
+    background-color: #b8b8b8;
+    border-radius: 20px;
+}
 .widgets .content{
     width: 100%;
 }

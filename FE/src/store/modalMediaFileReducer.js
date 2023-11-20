@@ -3,7 +3,7 @@ const initialState = {
   post: null,
 };
 
-const modalPostReducer = (state = initialState, action) => {
+const modalMediaFileReducer = (state = initialState, action) => {
   switch (action.type) {
     case "OPEN_MODAL":
       return {
@@ -21,4 +21,4 @@ const modalPostReducer = (state = initialState, action) => {
       return state;
   }
 };
-export default modalPostReducer;
+export default modalMediaFileReducer;

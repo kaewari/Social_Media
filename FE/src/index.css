@@ -15,15 +15,14 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 ::-webkit-scrollbar {
-    width: 7px; /* Adjust the width as needed */
+    width: 5px; /* Adjust the width as needed */
 }
-
 ::-webkit-scrollbar-button {
     display: none; /* Hide the scrollbar buttons (arrows) */
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #888; /* Color of the scroll thumb */
+    background-color: #999; /* Color of the scroll thumb */
     border-radius: 6px; /* Rounded corners for the thumb */
 }
 

@@ -8,7 +8,7 @@ import moment from "moment";
 const list = [];
 const PostModal = () => {
   const dispatch = useDispatch();
-  const { modalOpen, selectedPost } = useSelector((state) => state.modal);
+  const { modalOpen, selectedPost } = useSelector((state) => state.modalPost);
   const [show, setShow] = useState(false);
   const closeModalHandler = () => {
     document.body.style.overflowY = "scroll";
@@ -105,6 +105,8 @@ const PostModal = () => {
                   <p>{selectedPost._id}</p>
                 </Card.Body>
               </Card>
+              <div></div>
+              <div></div>
             </div>
           </div>
         </div>

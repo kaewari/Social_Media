@@ -33,9 +33,10 @@
     justify-self: end;
 }
 .modal .card{
-    height: calc(100vh - 100px);
-    scrollbar-gutter: stable;
-    overflow: hidden;
+    height: calc(100vh - 200px);
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable both-edges;
+    overflow-y: hidden;
 }
 .modal .card:hover{
     overflow-y: scroll;

@@ -1,10 +1,10 @@
 // rootReducer.js
 import { combineReducers } from "redux";
 import modalPostReducer from "./modalPostReducer";
-
+import modalMediaFileReducer from "./modalMediaFileReducer";
 const rootReducer = combineReducers({
-  modal: modalPostReducer,
-  // add other reducers as needed
+  modalPost: modalPostReducer,
+  modalMedia: modalMediaFileReducer,
 });
 
 export default rootReducer;
