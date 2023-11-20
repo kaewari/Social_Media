@@ -38,6 +38,8 @@
     padding: 8px !important;
 }
 .card .comment {
+    resize: none;
+    max-height: 100px;
     background-color: #f0f2f5;
     border: transparent;
     padding: 0 10px 0 10px !important;

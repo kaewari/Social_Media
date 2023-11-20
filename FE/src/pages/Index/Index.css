@@ -36,6 +36,14 @@
     #widgets{
         width: 100% !important;
     }
+    .modal .modal-content {
+        max-width: 60%;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .modal .modal-content {
+        max-width: 70%;
+    }
 }
 @media only screen and (max-width: 700px) {
     #index-page {
@@ -46,5 +54,8 @@
     }
     #feed{
         width: 90% !important;
+    }
+    .modal .modal-content {
+        max-width: 90%;
     }
 }
