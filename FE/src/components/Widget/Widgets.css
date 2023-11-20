@@ -2,8 +2,8 @@
     width: 25%;
     right: 0;
     position: fixed !important;
-    height: calc(100vh - 50px);
-    margin-right: 1px !important;
+    height: calc(100vh - 60px);
+    margin-right: 10px !important;
     overflow-y: hidden;
     scrollbar-gutter: stable;
 }
@@ -31,4 +31,7 @@
 }
 .widgets:hover{
     overflow-y: scroll;
+}
+.widgets:hover::-webkit-scrollbar-thumb{
+    background-color: rgba(153, 153, 153, 0.3) ;
 }

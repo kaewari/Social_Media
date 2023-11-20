@@ -2,9 +2,12 @@
     display: grid;
     grid-template-columns: 25% 50% 25%;
     width: 100% !important;
-    height: 100% !important;
+    height: calc(100vh - 60px);
     position: relative;
     top: 60px;
+    overflow-x: auto;
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
 }
 #side-bar{
     width: 100%;

@@ -1,7 +1,7 @@
 .side-bar{
     position: fixed !important;
     width: 25%;
-    height: calc(100vh - 50px);
+    height: calc(100vh - 60px);
     overflow-y: hidden;
     scrollbar-gutter: stable;
 }

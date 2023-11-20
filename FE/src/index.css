@@ -13,15 +13,17 @@ body {
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
 }
 ::-webkit-scrollbar {
-    width: 5px; /* Adjust the width as needed */
+    width: 6px; /* Adjust the width as needed */
 }
 ::-webkit-scrollbar-button {
     display: none; /* Hide the scrollbar buttons (arrows) */
 }
 
 ::-webkit-scrollbar-thumb {
+   
     background-color: #999; /* Color of the scroll thumb */
     border-radius: 6px; /* Rounded corners for the thumb */
 }

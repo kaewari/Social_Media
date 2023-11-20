@@ -11,7 +11,7 @@ const PostModal = () => {
   const { modalOpen, selectedPost } = useSelector((state) => state.modalPost);
   const [show, setShow] = useState(false);
   const closeModalHandler = () => {
-    document.body.style.overflowY = "scroll";
+    // document.getElementById("index-page").style.overflowY = "scroll";
     dispatch(closeModal());
   };
   function showMoreComments() {
