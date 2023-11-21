@@ -1,37 +1,46 @@
-.widgets{
-    width: 25%;
-    right: 0;
-    position: fixed !important;
+.widgets {
+    position: fixed;
+    min-width: 24%;
     height: calc(100vh - 60px);
-    margin-right: 10px !important;
     overflow-y: hidden;
+    margin-right: 2px;
     scrollbar-gutter: stable;
+    transition: overflow-y 0.3s;
 }
-.widgets .title .icon svg{
-    padding: 2px !important;
+.widgets .title .icon svg {
+    padding: 2px;
     cursor: pointer;
 }
-.widgets .title .icon svg:hover{
+.widgets .title .icon svg:hover {
     background-color: #b8b8b8;
     border-radius: 20px;
 }
-.widgets .content{
+
+.widgets .content {
     width: 100%;
 }
-.widgets .content > div{
-    padding: 0 0 10px 0 !important;
+
+.widgets .content > div {
+    padding: 0 0 10px 0;
     display: flex;
 }
-.widgets .content > div > img{
+
+.widgets .content > div > img {
     border-radius: 20px;
-    margin-right: 5px !important;
+    margin-right: 5px;
 }
-.widgets .content > div > p{
+
+.widgets .content > div > p {
     font-weight: 500;
 }
-.widgets:hover{
+.widgets:hover {
     overflow-y: scroll;
 }
-.widgets:hover::-webkit-scrollbar-thumb{
-    background-color: rgba(153, 153, 153, 0.3) ;
+
+.widgets:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(153, 153, 153, 0.3);
+}
+.widgets,
+.widgets:hover {
+    transition: overflow-y 0.3s;
 }

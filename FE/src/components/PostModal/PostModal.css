@@ -12,7 +12,8 @@
 
 .modal .modal-content {
     margin-top: 40px !important;
-    max-width: 45%;
+    min-width: 45%;
+    max-width: fit-content;
     background-color: #fff;
     border-radius: 5px;
     position: relative;
@@ -34,7 +35,7 @@
     justify-self: end;
 }
 .modal .card{
-    height: calc(100vh - 200px);
+    height: calc(100vh - 130px);
     scroll-behavior: smooth;
     scrollbar-gutter: stable both-edges;
     overflow-y: hidden;

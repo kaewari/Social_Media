@@ -12,11 +12,12 @@ function PostDesign({ post, openModalHandler = null }) {
     <Card className="post">
       <div className="m-2 p-2">
         <div className="d-flex">
-          <img className="avatar" src={post.image} alt="" />
-
+          <img className="avatar me-2" src={post.image} alt={post.username} />
           <div className="d-flex flex-column">
-            <span className="fw-bold ms-2">{post._id}</span>
-            <span className="ms-2">{moment().startOf("hour").fromNow()}</span>
+            <p className="fw-bold m-0">This is a username of post {post._id}</p>
+            <p className="m-0" style={{ fontSize: "x-small" }}>
+              {moment().startOf("hour").fromNow()}
+            </p>
           </div>
         </div>
         <Card.Title>{post.content}</Card.Title>

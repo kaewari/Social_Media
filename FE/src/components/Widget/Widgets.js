@@ -4,7 +4,7 @@ import { Search, Settings } from "@material-ui/icons";
 function Widgets() {
   return (
     <div className="widgets">
-      <div className="title d-flex justify-content-between pe-2">
+      <div className="title d-flex justify-content-between">
         <h6>Contacts</h6>
         <div className="d-flex icon">
           <div className="pe-3">

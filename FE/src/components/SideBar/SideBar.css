@@ -1,9 +1,12 @@
 .side-bar{
     position: fixed !important;
-    width: 25%;
+    min-width: 24%;
     height: calc(100vh - 60px);
     overflow-y: hidden;
     scrollbar-gutter: stable;
+}
+.sidebarList{
+    padding-left: 0;
 }
 .side-bar:hover{
     overflow-y: auto;
@@ -13,8 +16,6 @@
 }
 .side-bar li{
     border-radius: 10px;
-    margin-top: 10px !important;
-    padding: 10px !important;
 }
 .side-bar li > span{
     font-size: larger;

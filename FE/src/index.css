@@ -1,9 +1,10 @@
 *{
     outline: none !important;
     box-sizing: border-box !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    margin: 0;
+    padding: 0;
     text-decoration: none !important;
+    list-style-type: none !important;
 }
 body {
     background-color: #f0f2f5;
@@ -13,8 +14,6 @@ body {
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-        scrollbar-arrow-color: red;
-    scrollbar-base-color: blue;
     overflow: hidden;
 }
 ::-webkit-scrollbar {
