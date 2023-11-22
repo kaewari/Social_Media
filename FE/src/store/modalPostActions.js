@@ -1,8 +1,8 @@
-export const openModal = (post) => ({
+export const openModalPost = (post) => ({
   type: "OPEN_MODAL",
   payload: post,
 });
 
-export const closeModal = () => ({
+export const closeModalPost = () => ({
   type: "CLOSE_MODAL",
 });

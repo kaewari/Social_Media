@@ -5,6 +5,7 @@ import "./Feed.css";
 import Post from "../Post/Post";
 import SpinnerLoading from "../Spinner/SpinnerLoading";
 import PostModal from "../PostModal/PostModal";
+import ShareModal from "../Share/ShareModal";
 
 function Feed() {
   const [q] = useSearchParams();
@@ -112,6 +113,7 @@ function Feed() {
       <Post post={post3} />
       <Post post={post4} />
       <PostModal />
+      <ShareModal />
     </div>
   );
 }

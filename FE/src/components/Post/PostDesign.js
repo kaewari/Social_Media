@@ -2,9 +2,17 @@ import moment from "moment";
 import React, { useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 
-function PostDesign({ post, openModalHandler = null }) {
+function PostDesign({
+  post,
+  openModalPostHandler = null,
+  openModalShareHandler,
+}) {
   const [comment, setComment] = useState("");
-  const SendComment = (e) => {
+  const [like, setLike] = useState(false);
+  const toggleLikeHandle = () => {
+    setLike(!like);
+  };
+  const sendCommentHandle = (e) => {
     e.preventDefault();
     setComment("");
   };
@@ -27,21 +35,25 @@ function PostDesign({ post, openModalHandler = null }) {
       <Card.Body>
         <div className="d-flex justify-content-center">
           <div className="body d-flex justify-content-between">
-            <Button>
-              <i className="fa-solid fa-thumbs-up"></i>
+            <Button onClick={toggleLikeHandle}>
+              {like ? (
+                <i className="fa-solid fa-thumbs-up text-primary"></i>
+              ) : (
+                <i className="fa-solid fa-thumbs-up"></i>
+              )}
               Like
             </Button>
-            <Button onClick={openModalHandler}>
+            <Button onClick={openModalPostHandler}>
               <i className="fa-solid fa-comment"></i>
               Comment
             </Button>
-            <Button>
+            <Button onClick={openModalShareHandler}>
               <i className="fa-solid fa-share"></i>
               Share
             </Button>
           </div>
         </div>
-        <Form onSubmit={SendComment}>
+        <Form onSubmit={sendCommentHandle} className="comment-form">
           <div className="d-flex">
             <a href={post.image}>
               <img className="avatar" src={post.image} alt={post.title} />

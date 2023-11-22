@@ -1,14 +1,20 @@
 // src/PostModal.js
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { closeModal } from "../../store/modalPostActions";
+import { closeModalPost } from "../../store/modalPostActions";
+import { openModalPostShare } from "../../store/modalPostShareActions";
 import PostDesign from "../Post/PostDesign";
 import "./PostModal.css";
 const PostModal = () => {
   const dispatch = useDispatch();
   const { modalOpen, selectedPost } = useSelector((state) => state.modalPost);
+  console.log(modalOpen);
   const closeModalHandler = () => {
-    dispatch(closeModal());
+    dispatch(closeModalPost());
+  };
+  const openModalShareHandler = () => {
+    console.log(1231232);
+    dispatch(openModalPostShare(selectedPost));
   };
   return (
     <>
@@ -24,7 +30,11 @@ const PostModal = () => {
               ></div>
             </div>
             <div className="comments-container">
-              <PostDesign post={selectedPost} />
+              <PostDesign
+                post={selectedPost}
+                openModalPostHandler={null}
+                openModalShareHandler={openModalShareHandler}
+              />
             </div>
           </div>
         </div>

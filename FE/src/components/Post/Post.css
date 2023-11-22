@@ -1,12 +1,6 @@
-.show-comment:hover{
-    color: red !important;
-}
-.card .body > .w-100:hover{
-    color: blue !important;
-    background-color:gainsboro !important;
-}
 .card{
-    width: 100%;
+    min-width: 100%;
+    position: relative;
 }
 .avatar{
     width: 40px;

@@ -1,0 +1,64 @@
+.share-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.share-modal .modal-content {
+    width: 600px;
+    height: calc(400px);
+    overflow-y: scroll;
+    background-color: #fff;
+    border-radius: 5px;
+    position: relative;
+}
+.share-modal .title{
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    align-items: center;
+}
+.share-modal .close {
+    cursor: pointer;
+    background-color: #e4e6eb;
+    border: transparent;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 15px;
+    justify-self: end;
+}
+.share-modal .comments-container{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+.share-modal .comments-container .search{
+    flex-grow: 1;
+}
+.share-modal .comments-container .search .user{
+    padding: 5px;
+    border-top: 1px solid #e4e6eb;
+    border-bottom: 1px solid #e4e6eb;
+    border-left: none;
+    border-right: none;
+    display: flex;
+}
+.share-modal .comments-container .search .user input{
+    border: none;
+    width: auto;
+    flex-grow: 1;
+}
+@media only screen and (max-width: 600px) {
+    .share-modal .modal-content{
+        width: 100%;
+        height: 100%;
+    }
+}
