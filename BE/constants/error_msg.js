@@ -32,6 +32,10 @@ const errorMessages = {
   FILE_TOO_LARGE: "File size is too large. The maximum size allowed is 50MB.",
   FILE_COUNT_LIMIT: "Limit exceeded. The maximum file allowed is 5.",
   UNSUPPORTED_FILE: "Unsupported file format.",
+  GROUP_NOT_FOUND: "Group not found.",
+  GROUP_CREATION_FAILED: "Group creation failed.",
+  GROUP_UPDATE_FAILED: "Group update failed.",
+  GROUP_DELETE_FAILED: "Group deletion failed.",
 };
 
 // Export error messages

@@ -1,0 +1,22 @@
+.side-bar{
+    position: fixed !important;
+    min-width: 24%;
+    height: calc(100vh - 60px);
+    overflow-y: hidden;
+    scrollbar-gutter: stable;
+}
+.sidebarList{
+    padding-left: 0;
+}
+.side-bar:hover{
+    overflow-y: auto;
+}
+.side-bar li:hover{
+    background-color: #ddd;
+}
+.side-bar li{
+    border-radius: 10px;
+}
+.side-bar li > span{
+    font-size: larger;
+}

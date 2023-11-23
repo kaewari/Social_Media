@@ -1,22 +1,23 @@
 const { post, image, video } = require("../models/post");
+const user = require("../models/user");
 const statusCodes = require("../constants/status_code");
-const { ObjectId } = require("bson");
 const { default: mongoose } = require("mongoose");
+const errorMessages = require("../constants/error_msg");
+const AppError = require("../errors/AppError");
 class PostRepository {
   static async getPostById(postId) {
     try {
       const p = await post.findById(postId);
       if (p) return p;
-      throw new Error(statusCodes.NOT_FOUND);
+      return new AppError(errorMessages.POST_NOT_FOUND, statusCodes.NOT_FOUND);
     } catch (error) {
-      throw error;
+      return new AppError(error.message);
     }
   }
   static async createPost(p) {
     const session = await mongoose.startSession();
     session.startTransaction();
     try {
-      console.log(p);
       const promise = [];
       const newPost = await post.create(
         [
@@ -27,20 +28,30 @@ class PostRepository {
         ],
         { session: session }
       );
-      console.log("POST", newPost);
-      if (p.post_images[0]) {
-        const addPostId = p.post_images.map((image) => {
-          return { image_postId: newPost[0]._id, ...image };
-        });
-        console.log("image", addPostId);
+      if (p.post_images != null) {
+        const addPostId = p.post_images.map((file) => ({
+          image_url: file.path,
+          image_format: file.originalname.substring(
+            file.originalname.lastIndexOf(".")
+          ),
+          image_name: file.originalname,
+          image_size: file.size,
+          image_postId: newPost[0]._id,
+        }));
         const newImages = image.insertMany(addPostId, { session: session });
         promise.push(newImages);
       }
-      if (p.post_videos[0]) {
-        const addPostId = p.post_videos.map((video) => {
-          return { video_postId: newPost[0]._id, ...video };
-        });
-        console.log("video", addPostId);
+      if (p.post_videos != null) {
+        const addPostId = p.post_videos.map((file) => ({
+          video_url: file.path,
+          video_format: file.originalname.substring(
+            file.originalname.lastIndexOf(".")
+          ),
+          video_name: file.originalname,
+          video_size: file.size,
+          video_thumbnail: file.video_thumbnail,
+          video_postId: newPost[0]._id,
+        }));
         const newVideos = video.insertMany(addPostId, { session: session });
         promise.push(newVideos);
       }
@@ -49,13 +60,15 @@ class PostRepository {
           return results;
         })
         .catch((error) => {
-          throw new Error(error.message);
+          return new AppError(error.message);
         });
       await session.commitTransaction();
-      session.endSession();
       return results;
     } catch (error) {
-      throw error;
+      await session.abortTransaction();
+      return new AppError();
+    } finally {
+      session.endSession();
     }
   }
   static async getPostByUserId(userId) {
@@ -89,7 +102,7 @@ class PostRepository {
       throw error;
     }
   }
-  static async getPostsFriends(lastPostId, pageSize) {
+  static async getPosts(lastPostId, pageSize) {
     try {
       if (lastPostId) {
         const posts = await post

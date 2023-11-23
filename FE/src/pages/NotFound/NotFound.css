@@ -1,0 +1,22 @@
+/* NotFound.css */
+.not-found-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.not-found-title {
+  font-size: 36px;
+  color: #ff6347; /* Tomato color */
+}
+
+.not-found-message {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #808080; /* Gray color */
+}
+
+.not-found-image {
+  margin-top: 20px;
+  max-width: 100%;
+  height: auto;
+}

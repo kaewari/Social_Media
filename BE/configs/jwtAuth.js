@@ -40,7 +40,7 @@ const verifyToken = async (req, res, next) => {
   const getToken = token.split(" ")[1] ?? token;
   jwt.verify(getToken, properties.JWT_SECRET_KEY, (err, payload) => {
     if (payload) {
-      req.username = payload.data.username;
+      req.user_id = payload.data.id;
       return next();
     }
     if (err) return res.status(401).json({ error: err });

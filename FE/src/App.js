@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React from "react";
-import "./App.css"
+import "./App.css";
 function App() {
   return (
     <BrowserRouter>

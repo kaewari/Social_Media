@@ -1,16 +1,18 @@
 import React from "react";
-import SideBar from "../../components/SideBar";
-import Widgets from "../../components/Widgets";
+import Feed from "../../components/Feed/Feed";
+import PostUpload from "../../components/PostUpload/PostUpload";
+import SideBar from "../../components/SideBar/SideBar";
+import Widgets from "../../components/Widget/Widgets";
 import "./Index.css";
-import Feed from "../../components/Feed";
 
 function Index() {
   return (
-    <div className="index-page d-flex">
+    <div id="index-page">
       <div id="side-bar">
         <SideBar />
       </div>
       <div id="feed">
+        <PostUpload />
         <Feed />
       </div>
       <div id="widgets">

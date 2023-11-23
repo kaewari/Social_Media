@@ -1,6 +1,6 @@
 import React from "react";
+import { Button, Form } from "react-bootstrap";
 import "./Profile.css";
-import { Button, Form, Image } from "react-bootstrap";
 
 function Profile() {
   return (

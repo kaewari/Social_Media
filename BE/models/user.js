@@ -36,8 +36,6 @@ const schema = new mongoose.Schema({
   user_phone: {
     type: String,
     trim: true,
-    min: 10,
-    max: 10,
     unique: true,
     match: [/^[0-9]{10}$/, "Phone number must have 10 digits"],
     required: [true, "Please provide your phone number"],
@@ -47,7 +45,7 @@ const schema = new mongoose.Schema({
     enum: { values: ["male", "female"], message: "{VALUE} is not supported" },
   },
   user_birthday: { type: Date },
-  user_address: { type: String },
+  user_address: { type: String, trim: true },
   user_password: {
     type: String,
     match: [
