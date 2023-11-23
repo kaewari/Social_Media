@@ -1,13 +1,17 @@
+.page{
+    height: calc(100vh);
+    overflow-y: auto;
+}
 .login-page{  
     display: flex;
+    position: relative;
     flex-direction: row;
-    min-height: 82vh;
+    height: 100%;
     width: 100%;
     justify-content: center;
     align-items: center;
 }
 .login-page .left{
-    margin-top: -5rem !important;
     width: 30rem;
 }
 .login-page .left p{
@@ -18,8 +22,11 @@
     margin-bottom: 5rem;
     max-width: 400px;
 }
+.login-page .right{
+    flex-direction: column;
+}
 .login-page .right form{
-    width: 396px;
+    width: 400px;
 }
 .login-page .right form input{
     border: 0px;

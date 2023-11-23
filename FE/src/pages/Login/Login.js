@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "./Login.css";
-import { authApi, endpoint } from "../../apis/Apis";
+import { loginUser } from "../../helpers/authenticationHelpers";
 import Register from "../Register/Register";
+import "./Login.css";
 function Login() {
   const [username, setusername] = useState("");
   const [password, setPassword] = useState("");
@@ -13,46 +13,13 @@ function Login() {
     e.preventDefault();
     try {
       setError("");
-      if (password.length < 5) {
-        setError("Passwords must be at least 8 characters.");
-        console.log(error);
-        return;
-      }
-      if (username.length < 5 || username.length > 20) {
-        console.log(username.length);
-        setError("Username must be between 5-10 characters.");
-        console.log(error);
-        return;
-      }
-      await authApi()
-        .post(endpoint["login"], {
-          user_username: username,
-          user_password: password,
-        })
-        .then((res) => {
-          document.cookie = `accessToken = ${res.data.accessToken};secure`;
-          document.cookie = `refreshToken = ${res.data.refreshToken};secure`;
-        });
+      await loginUser(username, password);
     } catch (error) {
-      console.log(error.message);
+      setError(error.message);
     }
   };
-  const handleCreateAccount = (msg) => {
-    if (msg === false) setShow(msg);
-    else {
-      setShow(!show);
-    }
-    if (!show) {
-      document.getElementsByClassName("login-page").item(0).style.opacity = 0.6;
-      document
-        .getElementsByClassName("login-page")
-        .item(0).style.pointerEvents = "none";
-    } else {
-      document.getElementsByClassName("login-page").item(0).style.opacity = 1;
-      document
-        .getElementsByClassName("login-page")
-        .item(0).style.pointerEvents = "auto";
-    }
+  const handleShowRegister = () => {
+    setShow(!show);
   };
 
   return (
@@ -70,7 +37,7 @@ function Login() {
             className="bg-white border shadow rounded-3"
           >
             {error && (
-              <p className="pt-3 text-danger text-center fw-bold">{error}</p>
+              <h5 className="pt-3 text-danger text-center fw-bold">{error}</h5>
             )}
             <Form.Group className="pt-3 ps-3 pe-3">
               <input
@@ -101,15 +68,21 @@ function Login() {
             <hr className="m-3" />
             <Form.Group className="new-account m-4">
               <div className="rounded-2 fs-6 fw-bold">
-                <Button onClick={handleCreateAccount} variant="none">
+                <Button onClick={handleShowRegister} variant="none">
                   Create new account
                 </Button>
               </div>
             </Form.Group>
           </Form>
+          <div className="message">
+            <p className="p-4">
+              <span className="fw-bold">Create a Page</span> for a celebrity,
+              brand or business.
+            </p>
+          </div>
         </div>
       </div>
-      {show && <Register handleCreateAccount={handleCreateAccount} />}
+      {show && <Register handleShowRegister={handleShowRegister} />}
     </div>
   );
 }

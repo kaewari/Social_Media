@@ -12,9 +12,9 @@ import {
 import { useState } from "react";
 import { Image } from "react-bootstrap";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import SearchBar from "../components/SearchBar/SearchBar";
-import logo from "../static/instagram_icon.png";
 import "./Header.css";
+import SearchBar from "../SearchBar/SearchBar";
+import { File } from "../../assets/File";
 function Header() {
   const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
@@ -27,7 +27,7 @@ function Header() {
     <div className="header pt-2 pb-2 bg-body-tertiary">
       <div className="left">
         <Link to="/">
-          <Image src={logo} alt="logo" width={40} roundedCircle={true} />
+          <Image src={File.Logo} alt="logo" width={40} roundedCircle={true} />
         </Link>
         <SearchBar />
       </div>

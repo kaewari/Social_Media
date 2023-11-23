@@ -1,13 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { closeModalPostShare } from "../../store/modalPostShareActions";
-import { Form } from "react-bootstrap";
+import { closeModalPostShare } from "../../store/actions/modalPostShareActions";
 import "./ShareModal.css";
 function ShareModal() {
   const dispatch = useDispatch();
-  const { modalOpen, selectedPost } = useSelector(
-    (state) => state.modalPostShare
-  );
+  const { modalOpen } = useSelector((state) => state.modalPostShare);
   const closeModalHandler = () => {
     dispatch(closeModalPostShare());
   };
@@ -28,7 +25,10 @@ function ShareModal() {
               <div class="search">
                 <div className="user">
                   <span class="p-3">To:</span>
-                  <input type="text" placeholder="Search for people and groups"/>
+                  <input
+                    type="text"
+                    placeholder="Search for people and groups"
+                  />
                 </div>
                 <div class="list-account">
                   <div className="p-3">

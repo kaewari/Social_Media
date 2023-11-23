@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { authApi, endpoint } from "../../apis/Apis";
+import { authApi, endpoint } from "../../services/axiosConfig";
 import "./Feed.css";
 import Post from "../Post/Post";
 import SpinnerLoading from "../Spinner/SpinnerLoading";
@@ -9,14 +9,14 @@ import ShareModal from "../Share/ShareModal";
 
 function Feed() {
   const [q] = useSearchParams();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [posts, setPosts] = useState([]);
-  const postRef = useRef([]);
-  const hasMore = useRef(false);
-  const [isError, setIsError] = useState(false);
-  const [error, setError] = useState("");
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [posts, setPosts] = useState([]);
+  // const postRef = useRef([]);
+  // const hasMore = useRef(false);
+  // const [isError, setIsError] = useState(false);
+  // const [error, setError] = useState("");
   const lastPostId = useRef("");
   const kw = q.get("kw");
   const post1 = {
@@ -35,35 +35,35 @@ function Feed() {
     _id: 4,
     image: "https://loremflickr.com/640/480/animals",
   };
-  useEffect(() => {
-    const abortController = new AbortController();
-    setIsLoading(true);
-    const get_posts = async () => {
-      await authApi()
-        .get(endpoint["posts"], {
-          signal: abortController.signal,
-        })
-        .then((res) => {
-          const new_posts = res.data.posts;
-          const new_state = new_posts.map((post) => {
-            return post;
-          });
-          setPosts(new_state);
-          hasMore.current = !!res.data.hasMore;
-          lastPostId.current = new_posts[new_posts.length - 1]._id;
-        })
-        .catch((err) => {
-          setIsError(true);
-          setError(err.message);
-        })
-        .finally(() => {
-          setIsLoading(false);
-          abortController.abort();
-        });
-    };
-    get_posts();
-    // return () => {};
-  }, [kw]);
+  // useEffect(() => {
+  //   const abortController = new AbortController();
+  //   setIsLoading(true);
+  //   const get_posts = async () => {
+  //     await authApi()
+  //       .get(endpoint["posts"], {
+  //         signal: abortController.signal,
+  //       })
+  //       .then((res) => {
+  //         const new_posts = res.data.posts;
+  //         const new_state = new_posts.map((post) => {
+  //           return post;
+  //         });
+  //         setPosts(new_state);
+  //         hasMore.current = !!res.data.hasMore;
+  //         lastPostId.current = new_posts[new_posts.length - 1]._id;
+  //       })
+  //       .catch((err) => {
+  //         setIsError(true);
+  //         setError(err.message);
+  //       })
+  //       .finally(() => {
+  //         setIsLoading(false);
+  //         abortController.abort();
+  //       });
+  //   };
+  //   get_posts();
+  // return () => {};
+  // }, [kw]);
   // useEffect(() => {
   //   window.addEventListener("scroll", () => {
   //     const abortController = new AbortController();

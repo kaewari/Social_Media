@@ -1,8 +1,8 @@
 // src/PostModal.js
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { closeModalPost } from "../../store/modalPostActions";
-import { openModalPostShare } from "../../store/modalPostShareActions";
+import { closeModalPost } from "../../store/actions/modalPostActions";
+import { openModalPostShare } from "../../store/actions/modalPostShareActions";
 import PostDesign from "../Post/PostDesign";
 import "./PostModal.css";
 const PostModal = () => {

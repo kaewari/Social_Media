@@ -2,7 +2,6 @@ import React from "react";
 import { Outlet, Route, Routes } from "react-router-dom";
 import Group from "../components/Group/Group";
 import Shop from "../components/Shop/Shop";
-import Header from "../layouts/Header";
 import BookMark from "./BookMark/BookMark";
 import Friend from "./Friend";
 import Index from "./Index/Index";
@@ -10,6 +9,8 @@ import Login from "./Login/Login";
 import Profile from "./Profile/Profile";
 import Register from "./Register/Register";
 import Video from "./Video";
+import NotFound from "./NotFound/NotFound";
+import Header from "../components/Header/Header";
 
 function Home() {
   const Layout = () => {
@@ -23,6 +24,7 @@ function Home() {
   return (
     <>
       <Routes>
+        <Route path="*" element={<NotFound />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route element={<Layout />}>
