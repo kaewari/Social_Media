@@ -1,5 +1,5 @@
 import moment from "moment";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 
 function PostDesign({
@@ -20,7 +20,7 @@ function PostDesign({
     <Card className="post">
       <div className="m-2 p-2">
         <div className="d-flex">
-          <img className="avatar me-2" src={post.image} alt={post.username} />
+          <img className="avatar me-2" src={post.image} alt={post.username} loading="lazy"/>
           <div className="d-flex flex-column">
             <p className="fw-bold m-0">This is a username of post {post._id}</p>
             <p className="m-0" style={{ fontSize: "x-small" }}>
@@ -31,7 +31,7 @@ function PostDesign({
         <Card.Title>{post.content}</Card.Title>
         <Card.Title>This is content from post {post._id}</Card.Title>
       </div>
-      <Card.Img src={post.image} />
+      <Card.Img src={post.image} loading="lazy" />
       <Card.Body>
         <div className="d-flex justify-content-center">
           <div className="body d-flex justify-content-between">
@@ -56,7 +56,7 @@ function PostDesign({
         <Form onSubmit={sendCommentHandle} className="comment-form">
           <div className="d-flex">
             <a href={post.image}>
-              <img className="avatar" src={post.image} alt={post.title} />
+              <img className="avatar" src={post.image} alt={post.title} loading="lazy"/>
             </a>
             <textarea
               id={post.id}

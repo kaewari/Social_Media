@@ -21,6 +21,7 @@ function PostUpload() {
           roundedCircle
           width={40}
           height={40}
+          loading="lazy"
         />
         <input
           className="w-100"

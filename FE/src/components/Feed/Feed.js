@@ -22,18 +22,22 @@ function Feed() {
   const post1 = {
     _id: 1,
     image: "https://loremflickr.com/640/480/animals",
+    username: "Okawari",
   };
   const post2 = {
     _id: 2,
     image: "https://loremflickr.com/640/480/animals",
+    username: "Okawari",
   };
   const post3 = {
     _id: 3,
     image: "https://loremflickr.com/640/480/animals",
+    username: "Okawari",
   };
   const post4 = {
     _id: 4,
     image: "https://loremflickr.com/640/480/animals",
+    username: "Okawari",
   };
   // useEffect(() => {
   //   const abortController = new AbortController();

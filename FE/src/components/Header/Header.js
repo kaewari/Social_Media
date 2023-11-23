@@ -17,10 +17,10 @@ import SearchBar from "../SearchBar/SearchBar";
 import { File } from "../../assets/File";
 function Header() {
   const navigate = useNavigate();
-  const [toggle, setToggle] = useState(false);
-  const handle = () => {
-    if (toggle) navigate(-1);
-    setToggle(!toggle);
+  const [toggleBookMark, setToggleBookMark] = useState(false);
+  const handleToggleBookMark = () => {
+    if (toggleBookMark) navigate(-1);
+    setToggleBookMark(!toggleBookMark);
   };
 
   return (
@@ -47,7 +47,10 @@ function Header() {
         <NavLink to={"/group"}>
           <GroupTwoTone />
         </NavLink>
-        <NavLink onClick={handle} to={!toggle && "/book-mark"}>
+        <NavLink
+          onClick={handleToggleBookMark}
+          to={!toggleBookMark && "/book-mark"}
+        >
           <Menu />
         </NavLink>
       </div>
