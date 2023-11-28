@@ -16,6 +16,15 @@ body {
     -moz-osx-font-smoothing: grayscale;
     overflow: hidden;
 }
+body.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+body.dark {
+  background-color: #121212;
+  color: #ffffff;
+}
 ::-webkit-scrollbar {
     width: 6px;
 }

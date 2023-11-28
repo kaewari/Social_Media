@@ -1,16 +1,47 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import "./Profile.css";
 
 function Profile() {
+  const imageRef = useRef(null);
+  const [previewImage, setPreviewImage] = useState(null);
+
+  useEffect(() => {
+    return () => {
+      previewImage && URL.revokeObjectURL(previewImage);
+    };
+  }, [previewImage]);
+  const handleAvatarChange = (e) => {
+    e.preventDefault();
+  };
+  const handleImageClick = () => {
+    imageRef.current.click();
+  };
+  const handleImageChange = (e) => {
+    const selectedFile = e.target.files[0];
+
+    if (selectedFile) {
+      const previewURL = URL.createObjectURL(selectedFile);
+      setPreviewImage(previewURL);
+      console.log(previewURL);
+    }
+  };
   return (
     <div className="d-flex justify-content-center">
       <div className="profile-page">
-        <Form className="avatar">
-          <img src="https://loremflickr.com/640/480/animals" alt="" />
-          <Form.Group className="new-avatar">
-            <Button type="submit">Change avatar</Button>
-          </Form.Group>
+        <Form onSubmit={handleAvatarChange} className="avatar">
+          <img
+            onClick={handleImageClick}
+            src={previewImage || "https://loremflickr.com/640/480/animals"}
+            alt="https://loremflickr.com/640/480/animals"
+          />
+          <input
+            type="file"
+            ref={imageRef}
+            className="d-none"
+            onChange={handleImageChange}
+            accept=".jpg, .jpeg, .png, .gif, .svg, .ico, .jfif, .webp"
+          />
         </Form>
         <Form className="info">
           <Form.Group>

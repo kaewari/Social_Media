@@ -24,7 +24,7 @@ function Home() {
   return (
     <>
       <Routes>
-        <Route path="*" element={<NotFound />} />
+        {/* <Route path="*" element={<NotFound />} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route element={<Layout />}>

@@ -1,26 +1,19 @@
-*{
-    outline: none !important;
-    box-sizing: border-box !important;
-    margin: 0;
-    padding: 0;
-    text-decoration: none !important;
-}
 .profile-page {
     display: flex;
     justify-content: space-around;
-    padding: 25px 0px 25px 0px !important;
+    padding: 25px 0px 25px 0px ;
     border-radius: 20px;
     width: 80%;
     background-color: aliceblue;
-    margin-top: 30px !important;
+    margin-top: 30px ;
 }
 .profile-page .info{
-    padding: 10px !important;
+    padding: 10px ;
     width: 60%;
     background-color: white;
     border: none;
     border-radius: 5px;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
 }
 .profile-page .avatar{
     justify-content: center;
@@ -29,16 +22,17 @@
 }
 .profile-page .avatar img {
     width: 400px;
+    height: 300px;
     border-radius: 10px;
 }
 .profile-page .avatar button{ 
     font-weight: 700;
-    margin: 10px !important;
+    margin: 10px;
     width: 50%;
-    padding: 7px !important;
+    padding: 7px;
 }
 .profile-page .info div {
-    margin-bottom: 10px !important;
+    margin-bottom: 10px;
     display: flex;
     flex-direction: column;
 }
@@ -48,10 +42,10 @@
 .profile-page .info div > label {
     font-size: large;
     font-weight: 500;
-    margin-bottom: 10px !important;
+    margin-bottom: 10px;
 }
 .profile-page .info div > input{
-    padding: 5px !important;
+    padding: 5px ;
     border: transparent;
     border-radius: 10px;
     font-weight: 500;
@@ -67,8 +61,8 @@
 }
 .profile-page .info .new-info button{
     font-weight: 700;
-    margin-top: 5px !important;
-    padding: 5px !important;
+    margin-top: 5px;
+    padding: 5px ;
     width: 50%;
 }
 @media only screen and (max-width: 1200px) {
@@ -76,17 +70,17 @@
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        padding: 25px !important;
+        padding: 25px ;
         border-radius: 20px;
         width: 80%;
         background-color: aliceblue;
-        margin-top: 30px !important;
+        margin-top: 30px ;
     }
     .profile-page .avatar{
-        margin-bottom: 20px !important;
+        margin-bottom: 20px ;
         justify-content: center;
         display: flex;
-        flex-direction: row !important;
+        flex-direction: row ;
         align-items: center;
     }
     .profile-page .avatar .new-avatar{
@@ -100,15 +94,15 @@
     .profile-page .avatar button{ 
         min-height: 100%;
         width: min-content;
-        margin: 0 0 0 10px !important;
-        padding: 10px !important;
+        margin: 0 0 0 10px ;
+        padding: 10px ;
     }
     .profile-page .info{
-        padding: 10px !important;
+        padding: 10px ;
         width: 100%;
         background-color: white;
         border: none;
         border-radius: 5px;
-        box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
     }
 }
